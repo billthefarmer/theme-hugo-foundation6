@@ -1,2 +1,5 @@
 node_modules
 exampleSite/themes
+.DS_Store
+npm-debug.log
+bower_components
