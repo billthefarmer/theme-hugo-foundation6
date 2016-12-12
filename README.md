@@ -49,6 +49,20 @@ There are several ways to help with the development of the theme:
 - Fork [the repository](https://github.com/htko89/hugo-theme-foundation6-blog) on GitHub, add features on a "feature" branch like `update-bootstrap`, and then send a [pull request](https://github.com/htko89/hugo-theme-foundation6-blog/compare) with your changes
 
 ## License
-This repository contains the code of [Foundation](http://foundation.zurb.com/), which is licensed under the [MIT license](https://tldrlegal.com/license/mit-license)
 
-Otherwise, the contents are [GPLv3](https://www.gnu.org/licenses/gpl-3.0.txt).
+### This repository is maintained by:
+* [Tony Ko](https://github.com/htko89), 
+  * [GPL v3 license](https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/LICENSE.txt)
+
+### This repository was originally forked from:
+* [Alan Orth - hugo-theme-bootstrap4-blog](https://github.com/alanorth/hugo-theme-bootstrap4-blog/)
+  * [GPL v3 license](https://github.com/alanorth/hugo-theme-bootstrap4-blog/blob/master/LICENSE.txt) 
+  * Clone vs Fork rationale: Foundation framework and demo implementation are different enough from original theme by Alan to possibly necessitate licensing, hence a new repository.
+
+### This repository contains the code of:
+* [Foundation](http://foundation.zurb.com/)
+  * [MIT license](https://tldrlegal.com/license/mit-license)
+* (In process of removal from repository) [Bootstrap](http://getbootstrap.com)
+  * [MIT license](https://tldrlegal.com/license/mit-license)
+* (In process of removal from repository) [Font Awesome](http://fontawesome.io/)
+  * [various licenses](http://fontawesome.io/license/).
