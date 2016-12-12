@@ -3,7 +3,10 @@ A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ si
 
 ![Screenshot](https://raw.githubusercontent.com/htko89/hugo-theme-foundation6-blog/master/screenshot@2x.png "Screenshot")
 
-`Disregard Below - To be overwritten with Foundation`
+## Warning: 
+
+> This repository is not ready for production, or release.
+> Disregard Below - All files / instructions are yet to be overwritten with relevant Foundation code / info.
 
 ## Features 
 
