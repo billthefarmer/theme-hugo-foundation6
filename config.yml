@@ -7,22 +7,11 @@ COMPATIBILITY:
   - "ie >= 9"
   - "ios >= 7"
 
-# UnCSS will use these settings
-UNCSS_OPTIONS:
-  html:
-    - "src/**/*.html"
-  ignore:
-    - !!js/regexp .foundation-mq
-    - !!js/regexp ^\.is-.*
-
 # Gulp will reference these paths when it copies files
 PATHS:
   # Path to dist folder
-  dist: "dist"  
-  # Paths to static assets that aren't images, CSS, or JavaScript
-  assets:
-    - "src/assets/**/*"
-    - "!src/assets/{img,js,scss}/**/*"
+  src: "source"
+  dist: "static"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
     - "bower_components/foundation-sites/scss"
@@ -56,6 +45,3 @@ PATHS:
     - "bower_components/foundation-sites/js/foundation.tabs.js"
     - "bower_components/foundation-sites/js/foundation.toggler.js"
     - "bower_components/foundation-sites/js/foundation.tooltip.js"
-    # Paths to your own project code are here
-    - "src/assets/js/!(app).js"
-    - "src/assets/js/app.js"
