@@ -34,11 +34,12 @@ A few suggestions to help you get a good looking site quickly:
 - Use the `<!--more-->` tag in posts to control how much of a post is shown on summary pages
 
 ## Building (For Developers)
-This theme uses the [Foundation](http://foundation.zurb.com/) framework. A static version of this is already included, but if you want to bump the version, tweak the style, etc, you'll need to rebuild the assets. Make sure you have NodeJS v4 or v6 installed, and then run the following from inside the theme's directory:
+This theme uses the [Foundation](http://foundation.zurb.com/) framework. A static version of this is already included, but if you want to update versions, edit scss, etc, you'll need to rebuild the assets. Make sure you have Node.js and Bower installed, and then run the following from inside the `bin` directory:
 
 ```
 $ npm install
-$ npm run build
+$ bower install
+$ npm start
 ```
 
 ## Contributing
