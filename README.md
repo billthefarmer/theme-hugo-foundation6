@@ -1,13 +1,13 @@
 # Hugo Foundation v6 Blog
-A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with build tools from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/)
+A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/)
 
 ![Screenshot](https://raw.githubusercontent.com/htko89/hugo-theme-foundation6-blog/master/screenshot@2x.png "Screenshot")
 
-## Warning: 
+## Warning
 > This repository is not ready for production, or release.
 > Disregard Below - All files / instructions are yet to be overwritten with relevant Foundation code / info.
 
-## Features 
+## Features
 * Responsive design
 * Uses Bootstrap v4's [native system fonts](http://v4-alpha.getbootstrap.com/content/reboot/#native-font-stack) to load quickly and look good on all platforms
 * Basic [OpenGraph](http://ogp.me) and [Twitter Card](https://dev.twitter.com/cards/types) metadata support
@@ -27,11 +27,11 @@ Clone the repository to your site's `themes` directory. Refer to [`exampleSite/c
 * If you want an image to be shown when you share a post on social media, specify at least one image in the post's front matter, for example: `images: ["/2016/10/screenshot.png"]`
 * Use the `<!--more-->` tag in posts to control how much of a post is shown on summary pages
 
-## Building, for developers. (Optional)
-This theme uses the build tools from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/) framework, for plain and simple scss / js building. For building, we have three directories:
+## Building, for developers (Optional)
+This theme uses gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/), for plain and simple scss / js building. For building, we have three directories:
 * `/static` contains built css / js files for immediate use.
 * `/source` contains unbuilt scss / js files.
-* `/bin` contains foundation's node and bower modules. 
+* `/bin` contains foundation's node and bower modules.
 * To set up a build environment, run the following from the `/bin` directory.
 ```
 $ npm install
@@ -48,7 +48,6 @@ $ npm run build
 
 ## Contributing
 There are several ways to help with the development of the theme:
-
 * [Open an issue](https://github.com/htko89/hugo-theme-foundation6-blog/issues/new) on GitHub if you have problems or feature requests
 * Alternatively, tackle one of the [existing issues](https://github.com/htko89/hugo-theme-foundation6-blog/issues) on the issue tracker
 * Fork [the repository](https://github.com/htko89/hugo-theme-foundation6-blog) on GitHub, add features on a "feature" branch like `update-bootstrap`, and then send a [pull request](https://github.com/htko89/hugo-theme-foundation6-blog/compare) with your changes
@@ -56,7 +55,7 @@ There are several ways to help with the development of the theme:
 ## License
 
 ### This repository is maintained by:
-* [Tony Ko](https://github.com/htko89), 
+* [Tony Ko](https://github.com/htko89)
   * [GPL 3](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)) - [License file](https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/LICENSE.txt)
 
 ### This repository was originally forked (now cloned) from:
