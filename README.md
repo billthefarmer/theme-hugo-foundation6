@@ -27,8 +27,8 @@ Clone the repository to your site's `themes` directory. Refer to [`exampleSite/c
 * If you want an image to be shown when you share a post on social media, specify at least one image in the post's front matter, for example: `images: ["/2016/10/screenshot.png"]`
 * Use the `<!--more-->` tag in posts to control how much of a post is shown on summary pages
 
-## Building (For Developers)
-This theme uses the build tools from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/) framework, for plain and simple css / js building. For building, we have three directories:
+## Building, for developers. (Optional)
+This theme uses the build tools from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/) framework, for plain and simple scss / js building. For building, we have three directories:
 * `/static` contains built css / js files for immediate use.
 * `/source` contains unbuilt scss / js files.
 * `/bin` contains foundation's node and bower modules. 
