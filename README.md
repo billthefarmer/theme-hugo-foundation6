@@ -1,5 +1,5 @@
 # Hugo Foundation v6 Blog
-A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html).
+A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with build tools from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/)
 
 ![Screenshot](https://raw.githubusercontent.com/htko89/hugo-theme-foundation6-blog/master/screenshot@2x.png "Screenshot")
 
@@ -28,7 +28,7 @@ Clone the repository to your site's `themes` directory. Refer to [`exampleSite/c
 * Use the `<!--more-->` tag in posts to control how much of a post is shown on summary pages
 
 ## Building (For Developers)
-This theme uses the [Foundation](http://foundation.zurb.com/) framework. For building, we have three directories:
+This theme uses the build tools from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/) framework, for plain and simple css / js building. For building, we have three directories:
 * `/static` contains built css / js files for immediate use.
 * `/source` contains unbuilt scss / js files.
 * `/bin` contains foundation's node and bower modules. 
@@ -65,9 +65,9 @@ There are several ways to help with the development of the theme:
   * Clone rationale: Foundation framework and demo implementation are different enough from original theme by Alan to possibly necessitate licensing, hence a new repository.
 
 ### This repository contains the code of:
-* [Foundation](http://foundation.zurb.com/)
+* [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/)
   * [MIT license](https://tldrlegal.com/license/mit-license)
-* (In process of removal from repository) [Bootstrap](http://getbootstrap.com)
+* (In process of removal from repository) [Bootstrap](http://getbootstrap.com/)
   * [MIT license](https://tldrlegal.com/license/mit-license)
 * (In process of removal from repository) [Font Awesome](http://fontawesome.io/)
   * [various licenses](http://fontawesome.io/license/).
