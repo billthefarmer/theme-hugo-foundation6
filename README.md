@@ -57,11 +57,11 @@ There are several ways to help with the development of the theme:
 
 ### This repository is maintained by:
 * [Tony Ko](https://github.com/htko89), 
-  * [GPL v3 license](https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/LICENSE.txt)
+  * [GPL 3](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)) - [License file](https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/LICENSE.txt)
 
 ### This repository was originally forked (now cloned) from:
 * [Alan Orth - hugo-theme-bootstrap4-blog](https://github.com/alanorth/hugo-theme-bootstrap4-blog/)
-  * [GPL v3 license](https://github.com/alanorth/hugo-theme-bootstrap4-blog/blob/master/LICENSE.txt) 
+  * [GPL 3](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)) - [License file](https://github.com/alanorth/hugo-theme-bootstrap4-blog/blob/master/LICENSE.txt)
   * Clone rationale: Foundation framework and demo implementation are different enough from original theme by Alan to possibly necessitate licensing, hence a new repository.
 
 ### This repository contains the code of:
@@ -70,4 +70,4 @@ There are several ways to help with the development of the theme:
 * (In process of removal from repository) [Bootstrap](http://getbootstrap.com/)
   * [MIT license](https://tldrlegal.com/license/mit-license)
 * (In process of removal from repository) [Font Awesome](http://fontawesome.io/)
-  * [various licenses](http://fontawesome.io/license/).
+  * [Various licenses](http://fontawesome.io/license/).
