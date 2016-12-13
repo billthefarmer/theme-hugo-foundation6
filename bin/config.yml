@@ -10,8 +10,8 @@ COMPATIBILITY:
 # Gulp will reference these paths when it copies files
 PATHS:
   # Path to dist folder
-  src: "source"
-  dist: "static"
+  src: "../source"
+  dist: "../static"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
     - "bower_components/foundation-sites/scss"
