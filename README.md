@@ -55,10 +55,10 @@ There are several ways to help with the development of the theme:
 * [Tony Ko](https://github.com/htko89), 
   * [GPL v3 license](https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/LICENSE.txt)
 
-### This repository was originally forked from:
+### This repository was originally forked (now cloned) from:
 * [Alan Orth - hugo-theme-bootstrap4-blog](https://github.com/alanorth/hugo-theme-bootstrap4-blog/)
   * [GPL v3 license](https://github.com/alanorth/hugo-theme-bootstrap4-blog/blob/master/LICENSE.txt) 
-  * Clone vs Fork rationale: Foundation framework and demo implementation are different enough from original theme by Alan to possibly necessitate licensing, hence a new repository.
+  * Clone rationale: Foundation framework and demo implementation are different enough from original theme by Alan to possibly necessitate licensing, hence a new repository.
 
 ### This repository contains the code of:
 * [Foundation](http://foundation.zurb.com/)
