@@ -22,11 +22,13 @@ function loadConfig() {
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
- gulp.series(clean, gulp.parallel(sass, javascript) ));
+  gulp.series( gulp.parallel(sass, javascript) )
+);
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
-  gulp.series('build');
+  gulp.series('build')
+);
 
 // Compile Sass into CSS
 // In production, the CSS is compressed
@@ -42,8 +44,7 @@ function sass() {
       }))
     .pipe($.if(PRODUCTION, $.cssnano()))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
-    .pipe(gulp.dest(PATHS.dist + '/css'))
-    .pipe(browser.reload({ stream: true }));
+    .pipe(gulp.dest(PATHS.dist + '/css'));
 }
 
 // Combine JavaScript into one file
