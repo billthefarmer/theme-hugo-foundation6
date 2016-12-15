@@ -103,8 +103,8 @@ function clean(done) {
 
 // Watch for changes to scss / js / hugo
   function watch() {
-    gulp.watch(THEME.watch.scss).on('all', gulp.series(sass, browser.reload));
-    gulp.watch(THEME.watch.js).on('all', gulp.series(javascript, browser.reload));
+    gulp.watch(THEME.watch.scss).on('all', gulp.series(sass, 'hugo', browser.reload));
+    gulp.watch(THEME.watch.js).on('all', gulp.series(javascript, 'hugo', browser.reload));
     gulp.watch(THEME.watch.root).on('all', gulp.series('hugo', browser.reload));
     gulp.watch(HUGO.watch.root).on('all', gulp.series('hugo', browser.reload));
   }
