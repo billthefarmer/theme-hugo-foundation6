@@ -25,15 +25,20 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.2.0",
     "js-yaml": "^3.4.6",
-    "yargs": "^3.8.0"
+    "yargs": "^3.8.0",
+    "browser-sync": "^2.10.0",
+    "gulp-util": "^3.0.7"
   },
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp",
+    "start": "gulp build",
+    "server": "gulp server",
     "build": "gulp build --production"
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   },
   "private": true
 }
