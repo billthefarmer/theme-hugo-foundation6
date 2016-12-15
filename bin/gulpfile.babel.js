@@ -19,10 +19,6 @@
     return yaml.load(ymlFile);
   }
 
-// `Package.json` -> Gulp Tasks
-  gulp.task('build', gulp.parallel(sass, javascript) ); // Build the "static" folder.
-  gulp.task('server', gulp.series('build', server, watch) ); // Build the site, run the server, and watch for file changes.
-
 // SCSS Build Task
 function sass() {
   return gulp.src(THEME.source + '/scss/app.scss')
@@ -64,8 +60,7 @@ function sass() {
   function server(done) {
     browser.init({
       server: {
-        baseDir: ["./", HUGO.root + "/public"],
-        directory: true
+        baseDir: HUGO.root + "/public"
       }, port: PORT
     });
     done();
@@ -93,6 +88,10 @@ function sass() {
   function watch() {
     gulp.watch(THEME.source + '/scss/**/*.scss').on('all', gulp.series(sass, browser.reload));
     gulp.watch(THEME.source + '/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
-    gulp.watch(hugo_base_watch).on('all', gulp.series(browser.reload));
-    gulp.watch(hugo_themes_watch).on('all', gulp.series(browser.reload));
+    gulp.watch(hugo_base_watch).on('all', gulp.series('hugo', browser.reload));
+    gulp.watch(hugo_themes_watch).on('all', gulp.series('hugo', browser.reload));
   }
+
+// `Package.json` -> Gulp Tasks
+  gulp.task('build', gulp.series( gulp.parallel(sass, javascript), 'hugo' )); // Build the "static" folder.
+  gulp.task('server', gulp.series('build', server, watch) ); // Build the site, run the server, and watch for file changes.
