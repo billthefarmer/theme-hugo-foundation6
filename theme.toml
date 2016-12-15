@@ -7,7 +7,6 @@ tags = ["foundation", "blog"]
 features = ["responsive", "blog"]
 min_version = 0.17
 
-
 [author]
   name = "Tony Ko"
   homepage = "http://www.htko.ca"
