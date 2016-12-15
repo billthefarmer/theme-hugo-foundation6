@@ -12,7 +12,7 @@
   import gutil    from 'gulp-util';
   import browser  from 'browser-sync';
 
-// Load configuration & variables
+// Load configuration & path variables
   const $ = plugins(); // Load all Gulp plugins into one variable
   const PRODUCTION = !!(yargs.argv.production); // Check for --production flag
   var { COMPATIBILITY, PORT, PATHS } = loadConfig(); // Load settings from config.yml
@@ -21,18 +21,28 @@
     return yaml.load(ymlFile);
   }
 
-// Set up additional variables
-  var THEME = {}; var HUGO = {};
-  THEME.root = path.dirname(path.resolve()); // Full path of theme's root
-  THEME.source = path.join(THEME.root, '/source'); // Full path of theme's source folder
-  THEME.static = path.join(THEME.root, '/static'); // Full path of theme's static folder
-  HUGO.root = path.join(THEME.root, '../..'); // Full path of Hugo's root (assumes it is two directories up)
-  HUGO.public = path.join(HUGO.root, '/public'); // Full path of Hugo's public folder
-
-// Delete `public` folder
-function clean(done) {
-  rimraf(HUGO.public, done);
-}
+// Set up additional
+  var THEME = {}; var HUGO = {}; THEME.watch = {}; HUGO.watch = {};
+  // Root paths
+    THEME.root        =   path.dirname( path.resolve() ); // Full path of theme's root
+    THEME.name        =   THEME.root.split( path.sep ).pop() // Full name of theme's root folder
+    HUGO.root         =   path.join( THEME.root, '../..' ); // Full path of Hugo's root (assumes it is two directories up)
+  // Special directories
+    THEME.source      =   path.join(THEME.root, '/source'); // Full path of theme's source folder
+    THEME.static      =   path.join(THEME.root, '/static'); // Full path of theme's static folder
+    HUGO.public       =   path.join(HUGO.root, '/public'); // Full path of Hugo's public folder
+  // Watch directories
+    THEME.watch.scss  =   path.join(THEME.source, '/scss/**/*.scss');
+    THEME.watch.js    =   path.join(THEME.source, '/js/**/*.js');
+    THEME.watch.root  = [ path.join(THEME.root, '/archetypes/**/*.md'),
+                          path.join(THEME.root, '/content/**/*.md'),
+                          path.join(THEME.root, '/layouts/**/*'),
+                          path.join(THEME.root, '/i18n/**/*'),
+                          path.join(THEME.root, '/theme.toml') ];
+    HUGO.watch.root   = [ path.join(HUGO.root, '/archetypes/**/*.md'),
+                          path.join(HUGO.root, '/content/**/*.md'),
+                          path.join(HUGO.root, '/layouts/**/*'),
+                          path.join(HUGO.root, '/config.toml') ];
 
 // SCSS build task
 function sass() {
@@ -64,9 +74,14 @@ function sass() {
       .pipe(gulp.dest( path.join(THEME.static, '/js') ));
   }
 
+// Delete `public` folder
+function clean(done) {
+  rimraf(HUGO.public, done);
+}
+
 // Hugo build task
   gulp.task('hugo', (code) => {
-    return cp.spawn('hugo', ['-t', 'foundation', '-s',HUGO.root], { stdio: 'inherit' })
+    return cp.spawn('hugo', ['-t', THEME.name, '-s',HUGO.root], { stdio: 'inherit' })
       .on('error', (error) => gutil.log(gutil.colors.red(error.message)))
       .on('close', code);
   })
@@ -87,28 +102,13 @@ function sass() {
   }
 
 // Watch for changes to scss / js / hugo
-  var theme_scss_watch = path.join(THEME.source, '/scss/**/*.scss')
-  var theme_js_watch = path.join(THEME.source, '/js/**/*.js')
-  var hugo_base_watch = [
-    path.join(THEME.root, '/archetypes/**/*.md'),
-    path.join(THEME.root, '/content/**/*.md'),
-    path.join(THEME.root, '/layouts/**/*'),
-    path.join(THEME.root, '/config.toml')
-  ];
-  var hugo_themes_watch = [
-    path.join(THEME.root, '/archetypes/**/*.md'),
-    path.join(THEME.root, '/content/**/*.md'),
-    path.join(THEME.root, '/layouts/**/*'),
-    path.join(THEME.root, '/i18n/**/*'),
-    path.join(THEME.root, '/theme.toml')
-  ];
   function watch() {
-    gulp.watch(theme_scss_watch).on('all', gulp.series(sass, browser.reload));
-    gulp.watch(theme_js_watch).on('all', gulp.series(javascript, browser.reload));
-    gulp.watch(hugo_base_watch).on('all', gulp.series('hugo', browser.reload));
-    gulp.watch(hugo_themes_watch).on('all', gulp.series('hugo', browser.reload));
+    gulp.watch(THEME.watch.scss).on('all', gulp.series(sass, browser.reload));
+    gulp.watch(THEME.watch.js).on('all', gulp.series(javascript, browser.reload));
+    gulp.watch(THEME.watch.root).on('all', gulp.series('hugo', browser.reload));
+    gulp.watch(HUGO.watch.root).on('all', gulp.series('hugo', browser.reload));
   }
 
 // `Package.json` -> Gulp tasks
   gulp.task('build', gulp.series( gulp.parallel(sass, javascript) )); // Build the 'static' folder.
-  gulp.task('server', gulp.series( clean, 'build', 'hugo', server, watch )); // Build the site, run the server, and watch for file changes.
+  gulp.task('server', gulp.series( 'build', clean, 'hugo', server, watch )); // Build the site, run the server, and watch for file changes.
