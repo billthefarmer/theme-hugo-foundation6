@@ -1,5 +1,5 @@
 # Your project's server will run on localhost:xxxx at this port
-PORT: 8000
+PORT: 1313
 
 # Autoprefixer will make sure your CSS works with these browsers
 COMPATIBILITY:
@@ -7,11 +7,19 @@ COMPATIBILITY:
   - "ie >= 9"
   - "ios >= 7"
 
-# Gulp will reference these paths when it copies files
-PATHS:
+# Hugo directory.
+HUGO:
+  root: "../../.."
+
+# Theme source and static directories.
+THEME:
   # Path to dist folder
-  src: "../source"
-  dist: "../static"
+  root: ".."
+  source: "../source"
+  static: "../static"
+
+# Foundation source directories.
+PATHS:
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
     - "bower_components/foundation-sites/scss"
