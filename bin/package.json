@@ -33,9 +33,11 @@
   },
   "main": "gulpfile.js",
   "scripts": {
-    "build": "gulp build",
     "server": "gulp server",
-    "buildprod": "gulp build --production"
+    "build:debug": "gulp build",
+    "build:prod": "gulp build --production",
+    "build:css": "gulp css",
+    "build:js": "gulp js"
   },
   "babel": {
     "presets": [

@@ -58,8 +58,8 @@
         }))
       .pipe($.if(PRODUCTION, $.cssnano())) // In production, the CSS is compressed
       .pipe($.if(!PRODUCTION, $.sourcemaps.write())) // In production, the CSS is sourcemapped
-      .pipe(gulp.dest( path.join(THEME.static, '/css') ))
-      .pipe(browser.reload({ stream: true }));
+      .pipe(gulp.dest( path.join(THEME.static, '/css') ));
+      // .pipe(browser.reload({ stream: true }));
   }
 
 // JS build task
@@ -123,3 +123,5 @@
 // `Package.json` -> Gulp tasks
   gulp.task('build', gulp.series( gulp.parallel(sass, javascript) )); // Build the 'static' folder.
   gulp.task('server', gulp.series( 'build', clean, 'hugo', 'lint', server, watch )); // Build the site, run the server, and watch for file changes.
+  gulp.task('css', gulp.series( sass )); // Build the 'static' folder.
+  gulp.task('js', gulp.series( javascript )); // Build the 'static' folder.
