@@ -94,7 +94,6 @@
         indent_size: 2,
         preserve_newlines: false
       }))
-      .pipe(prettify.reporter())
       .pipe(gulp.dest( HUGO.public ));
   })
 
