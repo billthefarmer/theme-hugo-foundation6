@@ -37,13 +37,19 @@ This theme uses gulp build scripts based on the [Foundation Zurb Template](https
 $ npm install
 $ bower install
 ```
-* Then, to build debug css / js: (not minifed)
+* Choose one to build css / js files. Use `build:prod` to build minified, sourcemapped files.
 ```
-$ npm run build
+$ npm run build:debug
+$ npm run build:prod
 ```
-* Or, to build production css / js: (minified, sourcemapped)
+* Or, to build individual debug files.
 ```
-$ npm run buildprod
+$ npm run build:css
+$ npm run build:js
+```
+* Optional, but to serve content: (builds css / js, hugo, lint html, runs browsersync, watches all files)
+```
+$ npm run server
 ```
 
 ## Contributing
