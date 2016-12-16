@@ -1,16 +1,17 @@
 'use strict';
 
 // Import
-  import gulp     from 'gulp';
-  import plugins  from 'gulp-load-plugins';
-  import yargs    from 'yargs';
-  import yaml     from 'js-yaml';
-  import fs       from 'fs';
-  import path     from 'path';
-  import rimraf   from 'rimraf';
-  import cp       from 'child_process';
-  import gutil    from 'gulp-util';
-  import browser  from 'browser-sync';
+  import gulp       from 'gulp';
+  import plugins    from 'gulp-load-plugins';
+  import yargs      from 'yargs';
+  import yaml       from 'js-yaml';
+  import fs         from 'fs';
+  import path       from 'path';
+  import rimraf     from 'rimraf';
+  import cp         from 'child_process';
+  import gutil      from 'gulp-util';
+  import browser    from 'browser-sync';
+  import prettify   from 'gulp-jsbeautifier';
 
 // Load configuration & path variables
   const $ = plugins(); // Load all Gulp plugins into one variable
@@ -45,21 +46,21 @@
                           path.join(HUGO.root, '/config.toml') ];
 
 // SCSS build task
-function sass() {
-  return gulp.src( path.join(THEME.source, '/scss/app.scss') )
-    .pipe($.sourcemaps.init())
-    .pipe($.sass({
-      includePaths: PATHS.sass
-      })
-      .on('error', $.sass.logError))
-    .pipe($.autoprefixer({
-      browsers: COMPATIBILITY
-      }))
-    .pipe($.if(PRODUCTION, $.cssnano())) // In production, the CSS is compressed
-    .pipe($.if(!PRODUCTION, $.sourcemaps.write())) // In production, the CSS is sourcemapped
-    .pipe(gulp.dest( path.join(THEME.static, '/css') ))
-    .pipe(browser.reload({ stream: true }));
-}
+  function sass() {
+    return gulp.src( path.join(THEME.source, '/scss/app.scss') )
+      .pipe($.sourcemaps.init())
+      .pipe($.sass({
+        includePaths: PATHS.sass
+        })
+        .on('error', $.sass.logError))
+      .pipe($.autoprefixer({
+        browsers: COMPATIBILITY
+        }))
+      .pipe($.if(PRODUCTION, $.cssnano())) // In production, the CSS is compressed
+      .pipe($.if(!PRODUCTION, $.sourcemaps.write())) // In production, the CSS is sourcemapped
+      .pipe(gulp.dest( path.join(THEME.static, '/css') ))
+      .pipe(browser.reload({ stream: true }));
+  }
 
 // JS build task
   function javascript() { // Combine JavaScript into one file
@@ -75,15 +76,26 @@ function sass() {
   }
 
 // Delete `public` folder
-function clean(done) {
-  rimraf(HUGO.public, done);
-}
+  function clean(done) {
+    rimraf(HUGO.public, done);
+  }
 
 // Hugo build task
   gulp.task('hugo', (code) => {
     return cp.spawn('hugo', ['-t', THEME.name, '-s',HUGO.root], { stdio: 'inherit' })
       .on('error', (error) => gutil.log(gutil.colors.red(error.message)))
       .on('close', code);
+  })
+
+// Html5 lint task
+  gulp.task('lint', function() {
+    return gulp.src( path.join(HUGO.public, '/**/*.html') )
+      .pipe(prettify({
+        indent_size: 2,
+        preserve_newlines: false
+      }))
+      .pipe(prettify.reporter())
+      .pipe(gulp.dest( HUGO.public ));
   })
 
 // Start a server with BrowserSync to preview the site in
@@ -103,12 +115,12 @@ function clean(done) {
 
 // Watch for changes to scss / js / hugo
   function watch() {
-    gulp.watch(THEME.watch.scss).on('all', gulp.series(sass, 'hugo', browser.reload));
-    gulp.watch(THEME.watch.js).on('all', gulp.series(javascript, 'hugo', browser.reload));
-    gulp.watch(THEME.watch.root).on('all', gulp.series('hugo', browser.reload));
-    gulp.watch(HUGO.watch.root).on('all', gulp.series('hugo', browser.reload));
+    gulp.watch(THEME.watch.scss).on('all', gulp.series(sass, 'hugo', 'lint', browser.reload));
+    gulp.watch(THEME.watch.js).on('all', gulp.series(javascript, 'hugo', 'lint', browser.reload));
+    gulp.watch(THEME.watch.root).on('all', gulp.series('hugo', 'lint', browser.reload));
+    gulp.watch(HUGO.watch.root).on('all', gulp.series('hugo', 'lint', browser.reload));
   }
 
 // `Package.json` -> Gulp tasks
   gulp.task('build', gulp.series( gulp.parallel(sass, javascript) )); // Build the 'static' folder.
-  gulp.task('server', gulp.series( 'build', clean, 'hugo', server, watch )); // Build the site, run the server, and watch for file changes.
+  gulp.task('server', gulp.series( 'build', clean, 'hugo', 'lint', server, watch )); // Build the site, run the server, and watch for file changes.
