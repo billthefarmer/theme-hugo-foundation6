@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ .Lang }}">
-
   <head>
+
     {{ partial "head-meta.html" . }}
 
     <base href="{{ .Site.BaseURL }}">
     <link rel="canonical" href="{{ .Permalink }}">
-
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 
-    {{ "<!-- combined, minified CSS -->" | safeHTML }}
-    <link href="{{ .Site.BaseURL }}css/style.css" rel="stylesheet">
+    {{ "<!-- CSS -->" | safeHTML }}
+    <link href="{{ .Site.BaseURL }}css/app.css" rel="stylesheet">
 
     {{ if .RSSLink }}
     {{ "<!-- RSS 2.0 feed -->" | safeHTML }}
@@ -18,33 +17,34 @@
     <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
 
-    {{ template "_internal/google_analytics_async.html" . }}
-
     {{ if .Site.Params.cookie_consent_info_url }}
     {{ partial "cookie-consent.html" . }}
     {{ end }}
+    {{ template "_internal/google_analytics_async.html" . }}
 
     {{ partial "head-custom.html" . }}
-  </head>
 
+  </head>
   <body>
 
-    <div class="blog-masthead">
-      <div class="container">
-        <nav class="nav blog-nav">
-          <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}">{{ i18n "home" }}</a>
-          {{ if .Site.Params.custom_navbar }}
-          {{ range .Site.Menus.navbar }}
-          <a class="nav-link" href="{{.URL | absURL }}">{{ .Name }}</a>
-          {{ end }}
-          {{ else }}
-          {{ range where .Site.Pages "Type" "!=" "post" }}
-          <a class="nav-link" href="{{ .Permalink }}">{{ .Title }}</a>
-          {{ end }}
-          {{ end }}
-        </nav>
+    <header class="nav">
+      <div class="blog-masthead">
+        <div class="container">
+          <nav class="nav blog-nav">
+            <a class="nav-link {{ if .IsHome }}active{{ end }}" href="{{ .Site.BaseURL | absLangURL }}">{{ i18n "home" }}</a>
+            {{ if .Site.Params.custom_navbar }}
+            {{ range .Site.Menus.navbar }}
+            <a class="nav-link" href="{{.URL | absURL }}">{{ .Name }}</a>
+            {{ end }}
+            {{ else }}
+            {{ range where .Site.Pages "Type" "!=" "post" }}
+            <a class="nav-link" href="{{ .Permalink }}">{{ .Title }}</a>
+            {{ end }}
+            {{ end }}
+          </nav>
+        </div>
       </div>
-    </div>
+    </header>
 
     <header class="blog-header">
       <div class="container">
@@ -53,20 +53,18 @@
       </div>
     </header>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 blog-main">
-
-          {{ block "main" . }}
-          <!-- The part of the page that begins to differ between templates -->
-          {{ end }}
-
-        </div> {{ "<!-- /.blog-main -->" | safeHTML }}
-
-        {{ partial "sidebar.html" . }}
-
-      </div> {{ "<!-- /.row -->" | safeHTML }}
-    </div> {{ "<!-- /.container -->" | safeHTML }}
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 blog-main">
+            {{ block "main" . }}
+            <!-- The part of the page that begins to differ between templates -->
+            {{ end }}
+          </div> {{ "<!-- /.blog-main -->" | safeHTML }}
+          {{ partial "sidebar.html" . }}
+        </div> {{ "<!-- /.row -->" | safeHTML }}
+      </div> {{ "<!-- /.container -->" | safeHTML }}
+    </main>
 
     <footer class="blog-footer">
       <p>
@@ -81,8 +79,10 @@
       </p>
     </footer>
 
+  <foot>
+
+    <script src="{{ .Site.BaseURL }}js/app.js"></script>
+
+  </foot>
   </body>
-
 </html>
-
-{{- /* vim: set ts=2 sw=2 et: */}}
