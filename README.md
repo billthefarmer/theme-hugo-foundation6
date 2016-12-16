@@ -39,11 +39,11 @@ $ bower install
 ```
 * Then, to build debug css / js: (not minifed)
 ```
-$ npm run start
+$ npm run build
 ```
 * Or, to build production css / js: (minified, sourcemapped)
 ```
-$ npm run build
+$ npm run buildprod
 ```
 
 ## Contributing
@@ -56,7 +56,7 @@ There are several ways to help with the development of the theme:
 
 ### This repository is maintained by:
 * [Tony Ko](https://github.com/htko89)
-  * [GPL 3](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)) - [License file](https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/LICENSE.txt)
+  * [GPL 3](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)) - [License file](https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/license.txt)
 
 ### This repository was originally forked (now cloned) from:
 * [Alan Orth - hugo-theme-bootstrap4-blog](https://github.com/alanorth/hugo-theme-bootstrap4-blog/)

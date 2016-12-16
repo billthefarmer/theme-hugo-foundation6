@@ -1,6 +1,6 @@
 name = "Hugo Foundation v6 Blog"
 license = "GPL-3.0"
-licenselink = "https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/LICENSE.txt"
+licenselink = "https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/license.txt"
 description = "A simple Hugo theme based on the Foundation v6 blog (w/ sidebar) example."
 homepage = "https://github.com/htko89/hugo-theme-foundation6-blog"
 tags = ["foundation", "blog"]
