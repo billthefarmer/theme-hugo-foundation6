@@ -1,5 +1,5 @@
 # Hugo Foundation v6 Blog
-A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with scss build scripts based on [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/)
+A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with scss & js gulp build scripts.
 
 ![Screenshot](https://raw.githubusercontent.com/htko89/hugo-theme-foundation6-blog/master/images/screenshot.png "Screenshot")
 
@@ -23,7 +23,7 @@ Clone the repository to your site's `themes` directory. Refer to [`exampleSite/c
 * Use the `<!--more-->` tag in posts to control how much of a post is shown on summary pages
 
 ## Building, for developers (Optional)
-This theme uses gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/). You must have node and bower installed.
+This theme uses gulp build scripts modified from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/). You must have node and bower installed.
 * Run the following from the `/bin` folder to install all dependencies.
 
 Install Command | Description
