@@ -44,7 +44,7 @@ Build Tasks | Description
 
 Server Task | Description
 --- | ---
-`npm run server` | * builds css / js, hugo, lint html, runs browsersync, watches all files.
+`npm run server` | * builds css / js, deletes `/public`, builds hugo, lint html, runs browsersync, watches all files.
 
 ## Contributing
 There are several ways to help with the development of the theme:
