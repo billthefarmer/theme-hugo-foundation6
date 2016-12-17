@@ -1,49 +1,40 @@
 'use strict';
 
 // Import
-  import gulp       from 'gulp';
-  import plugins    from 'gulp-load-plugins';
-  import yargs      from 'yargs';
-  import yaml       from 'js-yaml';
-  import fs         from 'fs';
-  import path       from 'path';
-  import rimraf     from 'rimraf';
   import cp         from 'child_process';
+  import fs         from 'fs';
+  import gulp       from 'gulp';
   import gutil      from 'gulp-util';
-  import browser    from 'browser-sync';
+  import path       from 'path';
+  import plugins    from 'gulp-load-plugins';
   import prettify   from 'gulp-jsbeautifier';
+  import rimraf     from 'rimraf';
+  import yaml       from 'js-yaml';
+  import yargs      from 'yargs';
 
 // Load configuration & path variables
-  const $ = plugins(); // Load all Gulp plugins into one variable
-  const PRODUCTION = !!(yargs.argv.production); // Check for --production flag
-  var { COMPATIBILITY, PORT, PATHS } = loadConfig(); // Load settings from config.yml
-  function loadConfig() { // Load Config
+  const $ = plugins();                                // Load all Gulp plugins into one variable
+  const PRODUCTION = !!(yargs.argv.production);       // Check for --production flag
+  var { COMPATIBILITY, PORT, PATHS } = loadConfig();  // Load settings from config.yml
+  function loadConfig() {                             // Load Config
     let ymlFile = fs.readFileSync('config.yml', 'utf8');
     return yaml.load(ymlFile);
   }
 
-// Set up additional
-  var THEME = {}; var HUGO = {}; THEME.watch = {}; HUGO.watch = {};
-  // Root paths
-    THEME.root        =   path.dirname( path.resolve() ); // Full path of theme's root
-    THEME.name        =   THEME.root.split( path.sep ).pop() // Full name of theme's root folder
+// Set up additional path variables
+  var THEME = {}; var HUGO = {}; THEME.source = {} ; THEME.public = {}
+    THEME.root        =   path.dirname( path.resolve() );   // Set Theme root variable first
     HUGO.root         =   path.join( THEME.root, '../..' ); // Full path of Hugo's root (assumes it is two directories up)
-  // Special directories
-    THEME.source      =   path.join(THEME.root, '/source'); // Full path of theme's source folder
-    THEME.static      =   path.join(THEME.root, '/static'); // Full path of theme's static folder
-    HUGO.public       =   path.join(HUGO.root, '/public'); // Full path of Hugo's public folder
-  // Watch directories
-    THEME.watch.scss  =   path.join(THEME.source, '/scss/**/*.scss');
-    THEME.watch.js    =   path.join(THEME.source, '/js/**/*.js');
-    THEME.watch.root  = [ path.join(THEME.root, '/archetypes/**/*.md'),
-                          path.join(THEME.root, '/content/**/*.md'),
-                          path.join(THEME.root, '/layouts/**/*'),
-                          path.join(THEME.root, '/i18n/**/*'),
-                          path.join(THEME.root, '/theme.toml') ];
-    HUGO.watch.root   = [ path.join(HUGO.root, '/archetypes/**/*.md'),
-                          path.join(HUGO.root, '/content/**/*.md'),
-                          path.join(HUGO.root, '/layouts/**/*'),
-                          path.join(HUGO.root, '/config.toml') ];
+    THEME = {
+      root    :     THEME.root,                             // Full path of theme's root
+      name    :     THEME.root.split( path.sep ).pop(),     // Full name of theme's root folder
+      source  :     path.join(THEME.root, '/source'),       // Full path of theme's source folder
+      static  :     path.join(THEME.root, '/static'),       // Full path of theme's static folder
+    };
+    HUGO = {
+      root    :     HUGO.root,                              // Full path of Hugo's root (assumes it is two directories up)
+      public  :     path.join(HUGO.root, '/public'),        // Full path of Hugo's public folder
+    };
 
 // SCSS build task
   function sass() {
@@ -56,22 +47,21 @@
       .pipe($.autoprefixer({
         browsers: COMPATIBILITY
         }))
-      .pipe($.if(PRODUCTION, $.cssnano())) // In production, the CSS is compressed
-      .pipe($.if(!PRODUCTION, $.sourcemaps.write())) // In production, the CSS is sourcemapped
+      .pipe($.if(PRODUCTION, $.cssnano()))            // In production, the CSS is compressed
+      .pipe($.if(!PRODUCTION, $.sourcemaps.write()))  // In production, the CSS is sourcemapped
       .pipe(gulp.dest( path.join(THEME.static, '/css') ));
-      // .pipe(browser.reload({ stream: true }));
   }
 
 // JS build task
-  function javascript() { // Combine JavaScript into one file
+  function javascript() {                             // Combine JavaScript into one file
     return gulp.src(PATHS.javascript)
       .pipe($.sourcemaps.init())
       .pipe($.babel())
       .pipe($.concat('app.js'))
-      .pipe($.if(PRODUCTION, $.uglify() // In production, the file is minified
+      .pipe($.if(PRODUCTION, $.uglify()               // In production, the file is minified
         .on('error', e => { console.log(e); })
         ))
-      .pipe($.if(!PRODUCTION, $.sourcemaps.write())) // In production, the JS is sourcemapped
+      .pipe($.if(!PRODUCTION, $.sourcemaps.write()))  // In production, the JS is sourcemapped
       .pipe(gulp.dest( path.join(THEME.static, '/js') ));
   }
 
@@ -80,9 +70,9 @@
     rimraf(HUGO.public, done);
   }
 
-// Hugo build task
+// Hugo server task
   gulp.task('hugo', (code) => {
-    return cp.spawn('hugo', ['-t', THEME.name, '-s',HUGO.root], { stdio: 'inherit' })
+    return cp.spawn('hugo', ['server', '-p', PORT, '-t', THEME.name, '-s',HUGO.root], { stdio: 'inherit' })
       .on('error', (error) => gutil.log(gutil.colors.red(error.message)))
       .on('close', code);
   })
@@ -97,31 +87,15 @@
       .pipe(gulp.dest( HUGO.public ));
   })
 
-// Start a server with BrowserSync to preview the site in
-  function server(done) {
-    browser.init({
-      server: {
-        baseDir: HUGO.public
-      }, port: PORT
-    });
-    done();
-  }
-// Reload the browser with BrowserSync
-  function reload(done) {
-    browser.reload();
-    done();
-  }
-
-// Watch for changes to scss / js / hugo
+// Watch for changes for scss / js / lint
   function watch() {
-    gulp.watch(THEME.watch.scss).on('all', gulp.series(sass, 'hugo', 'lint', browser.reload));
-    gulp.watch(THEME.watch.js).on('all', gulp.series(javascript, 'hugo', 'lint', browser.reload));
-    gulp.watch(THEME.watch.root).on('all', gulp.series('hugo', 'lint', browser.reload));
-    gulp.watch(HUGO.watch.root).on('all', gulp.series('hugo', 'lint', browser.reload));
+    gulp.watch( path.join(THEME.source, '/scss/**/*.scss') ).on('all', gulp.series( sass, 'lint' ));
+    gulp.watch( path.join(THEME.source, '/js/**/*.js') ).on('all', gulp.series( javascript, 'lint' ));
+    gulp.watch( THEME.public ).on('all', gulp.series( 'lint' ));
   }
 
 // `Package.json` -> Gulp tasks
-  gulp.task('build', gulp.series( gulp.parallel(sass, javascript) )); // Build the 'static' folder.
-  gulp.task('server', gulp.series( 'build', clean, 'hugo', 'lint', server, watch )); // Build the site, run the server, and watch for file changes.
-  gulp.task('css', gulp.series( sass )); // Build the 'static' folder.
-  gulp.task('js', gulp.series( javascript )); // Build the 'static' folder.
+  gulp.task('build', gulp.series( gulp.parallel(sass, javascript) ));               // Build the 'static' folder.
+  gulp.task('server', gulp.series( 'build', clean, gulp.parallel('hugo', watch) )); // Build the site, run the server, and watch for file changes.
+  gulp.task('css', gulp.series( sass ));                                            // Build the 'static' folder.
+  gulp.task('js', gulp.series( javascript ));                                       // Build the 'static' folder.

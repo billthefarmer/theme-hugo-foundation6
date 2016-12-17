@@ -39,7 +39,7 @@ Build Tasks | Description
 `npm run build:prod` | Build minified, sourcemapped files.
 `npm run build:css` | Builds `debug` css only.
 `npm run build:js` | Builds `debug` js only.
-`npm run server` | Builds css / js, deletes `/public`, builds hugo, lint html, runs browsersync, watches all files.
+`npm run server` | Builds css / js, deletes `/public`, runs hugo server, watch css / js / lint files.
 
 ## Contributing
 There are several ways to help with the development of the theme:
