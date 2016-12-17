@@ -1,0 +1,9 @@
+{{ if .Params.categories }}
+  {{ range $index, $category := .Params.categories }}
+    {{ if gt $index 0 }}/
+    {{ end }}
+      <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">
+        {{ . }}
+      </a>
+  {{ end }}
+{{ end }}
