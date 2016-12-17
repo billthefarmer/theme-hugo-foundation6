@@ -23,7 +23,7 @@ Clone the repository to your site's `themes` directory. Refer to [`exampleSite/c
 * Use the `<!--more-->` tag in posts to control how much of a post is shown on summary pages
 
 ## Building, for developers (Optional)
-This theme uses gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/), for plain and simple scss / js building. For building, we have three directories:
+This theme uses gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/), for plain and simple scss / js building.
 * `/bin` contains foundation's node and bower modules. To set up a build environment, run the following from the `/bin` directory.
 ```
 $ npm install
@@ -34,7 +34,7 @@ $ bower install
 $ npm run build:debug
 $ npm run build:prod
 ```
-* Or, to build individual debug files.
+* Or, to build css or js only.
 ```
 $ npm run build:css
 $ npm run build:js
