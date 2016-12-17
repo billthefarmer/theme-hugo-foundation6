@@ -1,7 +1,7 @@
 # Hugo Foundation v6 Blog
 A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/)
 
-![Screenshot](https://raw.githubusercontent.com/htko89/hugo-theme-foundation6-blog/master/screenshot.png "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/htko89/hugo-theme-foundation6-blog/master/assets/screenshot.png "Screenshot")
 
 ## Warning
 > This repository is not ready for production, or release.
