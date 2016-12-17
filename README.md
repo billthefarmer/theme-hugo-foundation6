@@ -1,5 +1,5 @@
 # Hugo Foundation v6 Blog
-A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/)
+A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with scss build scripts based on [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/)
 
 ![Screenshot](https://raw.githubusercontent.com/htko89/hugo-theme-foundation6-blog/master/images/screenshot.png "Screenshot")
 
@@ -23,26 +23,28 @@ Clone the repository to your site's `themes` directory. Refer to [`exampleSite/c
 * Use the `<!--more-->` tag in posts to control how much of a post is shown on summary pages
 
 ## Building, for developers (Optional)
-This theme uses gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/), for plain and simple scss / js building.
-* `/bin` contains foundation's node and bower modules. To set up a build environment, run the following from the `/bin` directory.
-```
-$ npm install
-$ bower install
-```
-* Choose one to build css / js files from `/source` to `/static`. Use `build:prod` to build minified, sourcemapped files.
-```
-$ npm run build:debug
-$ npm run build:prod
-```
-* Or, to build css or js only.
-```
-$ npm run build:css
-$ npm run build:js
-```
-* Optional, but to serve content: (builds css / js, hugo, lint html, runs browsersync, watches all files)
-```
-$ npm run server
-```
+This theme uses gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/). You must have node and bower installed.
+* Run the following from the `/bin` folder to install all dependencies.
+
+Install Command | Description
+--- | ---
+`npm install` | 1. Installs scripts dependencies.
+`bower install` | 2. Installs assets dependencies.
+
+* Choose one to build scss / js files from `/source` to `/static`.
+
+Build Tasks | Description
+--- | ---
+`npm run build:debug` | * Build human readable `debug` files.
+`npm run build:prod` | *  Build minified, sourcemapped files.
+`npm run build:css` | * Builds `debug` css only.
+`npm run build:js` | * Builds `debug` js only.
+
+* Optional, but to test content: 
+
+Server Task | Description
+--- | ---
+`npm run server` | * builds css / js, hugo, lint html, runs browsersync, watches all files.
 
 ## Contributing
 There are several ways to help with the development of the theme:
