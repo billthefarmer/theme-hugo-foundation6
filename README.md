@@ -3,10 +3,6 @@ A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ si
 
 ![Screenshot](https://raw.githubusercontent.com/htko89/hugo-theme-foundation6-blog/master/images/screenshot.png "Screenshot")
 
-## Warning
-> This repository is not ready for production, or release.
-> Disregard Below - All files / instructions are yet to be overwritten with relevant Foundation code / info.
-
 ## Features
 * Responsive design
 * Basic [OpenGraph](http://ogp.me) and [Twitter Card](https://dev.twitter.com/cards/types) metadata support
@@ -28,15 +24,12 @@ Clone the repository to your site's `themes` directory. Refer to [`exampleSite/c
 
 ## Building, for developers (Optional)
 This theme uses gulp build scripts based on the [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/), for plain and simple scss / js building. For building, we have three directories:
-* `/static` contains built css / js files for immediate use.
-* `/source` contains unbuilt scss / js files.
-* `/bin` contains foundation's node and bower modules.
-* To set up a build environment, run the following from the `/bin` directory.
+* `/bin` contains foundation's node and bower modules. To set up a build environment, run the following from the `/bin` directory.
 ```
 $ npm install
 $ bower install
 ```
-* Choose one to build css / js files. Use `build:prod` to build minified, sourcemapped files.
+* Choose one to build css / js files from `/source` to `/static`. Use `build:prod` to build minified, sourcemapped files.
 ```
 $ npm run build:debug
 $ npm run build:prod
