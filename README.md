@@ -31,20 +31,15 @@ Install Command | Description
 `npm install` | 1. Installs scripts dependencies.
 `bower install` | 2. Installs assets dependencies.
 
-* Choose one to build scss / js files from `/source` to `/static`.
+* Choose one to build from scss / js files in `/source` to `/static`.
 
 Build Tasks | Description
 --- | ---
-`npm run build:debug` | * Build human readable `debug` files.
-`npm run build:prod` | *  Build minified, sourcemapped files.
-`npm run build:css` | * Builds `debug` css only.
-`npm run build:js` | * Builds `debug` js only.
-
-* Optional, but to test content: 
-
-Server Task | Description
---- | ---
-`npm run server` | * builds css / js, deletes `/public`, builds hugo, lint html, runs browsersync, watches all files.
+`npm run build:debug` | Build human readable `debug` files.
+`npm run build:prod` | Build minified, sourcemapped files.
+`npm run build:css` | Builds `debug` css only.
+`npm run build:js` | Builds `debug` js only.
+`npm run server` | Builds css / js, deletes `/public`, builds hugo, lint html, runs browsersync, watches all files.
 
 ## Contributing
 There are several ways to help with the development of the theme:
