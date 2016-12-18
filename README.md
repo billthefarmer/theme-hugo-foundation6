@@ -16,10 +16,10 @@ A simple [Hugo](https://gohugo.io) theme based on the [Foundation 6 blog (w/ sid
 
 ## Usage
 Clone the repository to your site's `themes` directory. Refer to [`exampleSite/config.toml`](https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/exampleSite/config.toml) for optional configuration values. A few suggestions to help you get a good looking site quickly:
-* Keep blog posts in the `content/post` directory, for example: `content/post/my-first-post.md`
-* Keep static pages in the `content` directory, for example: `content/about.md`
-* Keep media like images in the `static` directory, for example: `static/2016/10/screenshot.png`
-* If you want an image to be shown when you share a post on social media, specify at least one image in the post's front matter, for example: `images: ["/2016/10/screenshot.png"]`
+* Keep blog posts in the `content/post` directory, for example: `content/post/my-first-post.md`.
+* Keep static pages in the `content` directory, for example: `content/about.md`.
+* Keep media like images in the `static` directory, for example: `static/2016/10/screenshot.png`.
+* If you want an image to be shown when you share a post on social media, specify at least one image in the post's front matter, for example: `images: ["/2016/10/screenshot.png"]`.
 * Use the `<!--more-->` tag in posts to control how much of a post is shown on summary pages.
 
 ## Building, for developers (Optional)
@@ -41,9 +41,9 @@ Command | Description
 
 ## Contributing
 There are several ways to help with the development of the theme:
-* [Open an issue](https://github.com/htko89/hugo-theme-foundation6-blog/issues/new) on GitHub if you have problems or feature requests
-* Alternatively, tackle one of the [existing issues](https://github.com/htko89/hugo-theme-foundation6-blog/issues) on the issue tracker
-* Fork [the repository](https://github.com/htko89/hugo-theme-foundation6-blog) on GitHub, add features on a "feature" branch like `update-bootstrap`, and then send a [pull request](https://github.com/htko89/hugo-theme-foundation6-blog/compare) with your changes
+* [Open an issue](https://github.com/htko89/hugo-theme-foundation6-blog/issues/new) on GitHub if you have problems or feature requests.
+* Alternatively, tackle one of the [existing issues](https://github.com/htko89/hugo-theme-foundation6-blog/issues) on the issue tracker.
+* Fork [the repository](https://github.com/htko89/hugo-theme-foundation6-blog) on GitHub, add features on a "feature" branch like `update-bootstrap`, and then send a [pull request](https://github.com/htko89/hugo-theme-foundation6-blog/compare) with your changes.
 
 ## License
 
