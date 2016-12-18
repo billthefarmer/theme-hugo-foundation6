@@ -70,8 +70,15 @@
     rimraf(HUGO.public, done);
   }
 
+// Hugo build task
+  gulp.task('hugo-build', (code) => {
+    return cp.spawn('hugo', ['-t', THEME.name, '-s',HUGO.root], { stdio: 'inherit' })
+      .on('error', (error) => gutil.log(gutil.colors.red(error.message)))
+      .on('close', code);
+  })
+
 // Hugo server task
-  gulp.task('hugo', (code) => {
+  gulp.task('hugo-server', (code) => {
     return cp.spawn('hugo', ['server', '-p', PORT, '-t', THEME.name, '-s',HUGO.root], { stdio: 'inherit' })
       .on('error', (error) => gutil.log(gutil.colors.red(error.message)))
       .on('close', code);
@@ -95,7 +102,8 @@
   }
 
 // `Package.json` -> Gulp tasks
-  gulp.task('build', gulp.series( gulp.parallel(sass, javascript) ));               // Build the 'static' folder.
-  gulp.task('server', gulp.series( 'build', clean, gulp.parallel('hugo', watch) )); // Build the site, run the server, and watch for file changes.
-  gulp.task('css', gulp.series( sass ));                                            // Build the 'static' folder.
-  gulp.task('js', gulp.series( javascript ));                                       // Build the 'static' folder.
+  gulp.task('build', gulp.series( gulp.parallel(sass, javascript) ));                       // Build the 'static' folder.
+  gulp.task('css', gulp.series( sass ));                                                    // Build the 'static' folder.
+  gulp.task('js', gulp.series( javascript ));                                               // Build the 'static' folder.
+  gulp.task('public', gulp.series( 'build', clean, 'hugo-build', `lint` ));                 // Build the site, run the server, and watch for file changes.
+  gulp.task('server', gulp.series( 'build', clean, gulp.parallel('hugo-server', watch) ));  // Build the site, run the server, and watch for file changes.

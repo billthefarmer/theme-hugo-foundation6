@@ -32,11 +32,12 @@
   },
   "main": "gulpfile.js",
   "scripts": {
-    "server": "gulp server",
     "build:debug": "gulp build",
     "build:prod": "gulp build --production",
     "build:css": "gulp css",
-    "build:js": "gulp js"
+    "build:js": "gulp js",
+    "build:hugo": "gulp public",
+    "server": "gulp server"
   },
   "babel": {
     "presets": [
