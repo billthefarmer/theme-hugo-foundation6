@@ -7,17 +7,6 @@ COMPATIBILITY:
   - "ie >= 9"
   - "ios >= 7"
 
-# Hugo directory.
-HUGO:
-  root: "../../.."
-
-# Theme source and static directories.
-THEME:
-  # Path to dist folder
-  root: ".."
-  source: "../source"
-  static: "../static"
-
 # Foundation source directories.
 PATHS:
   # Paths to Sass libraries, which can then be loaded with @import
@@ -28,7 +17,7 @@ PATHS:
   javascript:
     # Libraries required by Foundation
     - "bower_components/jquery/dist/jquery.js"
-    - "bower_components/what-input/what-input.js"
+    - "bower_components/what-input/dist/what-input.js"
     # Core Foundation files
     - "bower_components/foundation-sites/js/foundation.core.js"
     - "bower_components/foundation-sites/js/foundation.util.*.js"
@@ -53,3 +42,4 @@ PATHS:
     - "bower_components/foundation-sites/js/foundation.tabs.js"
     - "bower_components/foundation-sites/js/foundation.toggler.js"
     - "bower_components/foundation-sites/js/foundation.tooltip.js"
+    - "bower_components/foundation-sites/js/foundation.zf.responsiveAccordionTabs.js"
