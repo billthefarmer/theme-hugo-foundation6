@@ -42,7 +42,7 @@ Build Tasks | Description
 
 * Hugo tasks (theme must be installed in a working or fresh hugo installation)
 
-Build Tasks | Description
+Hugo Tasks | Description
 --- | ---
 `npm run build:hugo` | Builds `debug` css / js, deletes `/public`, builds `/public`, lint `/public`.
 `npm run server` | Builds `debug` css / js, deletes `/public`, runs hugo server, start css / js / lint watch task.
