@@ -56,7 +56,7 @@
   function javascript() {                             // Combine JavaScript into one file
     return gulp.src(PATHS.javascript)
       .pipe($.sourcemaps.init())
-      .pipe($.babel())
+      .pipe($.babel({ignore: ['what-input.js']}))
       .pipe($.concat('app.js'))
       .pipe($.if(PRODUCTION, $.uglify()               // In production, the file is minified
         .on('error', e => { console.log(e); })
