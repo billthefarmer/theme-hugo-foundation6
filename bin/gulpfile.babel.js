@@ -13,10 +13,10 @@
   import yargs      from 'yargs';
 
 // Load configuration & path variables
-  const $ = plugins();                                // Load all Gulp plugins into one variable
-  const PRODUCTION = !!(yargs.argv.production);       // Check for --production flag
-  var { COMPATIBILITY, PORT, PATHS } = loadConfig();  // Load settings from config.yml
-  function loadConfig() {                             // Load Config
+  const $ = plugins();                                      // Load all Gulp plugins into one variable
+  const PRODUCTION = !!(yargs.argv.production);             // Check for --production flag
+  var { COMPATIBILITY, PORT, PATHS } = loadConfig();        // Load settings from config.yml
+  function loadConfig() {                                   // Load Config
     let ymlFile = fs.readFileSync('config.yml', 'utf8');
     return yaml.load(ymlFile);
   }
@@ -37,37 +37,37 @@
     };
 
 // SCSS build task
-  function sass() {
+  function sass() {                                         // SCSS import paths from `app.scss`
     return gulp.src( path.join(THEME.source, '/scss/app.scss') )
       .pipe($.sourcemaps.init())
-      .pipe($.sass({
+      .pipe($.sass({                                        // Build / concat scss
         includePaths: PATHS.sass
         })
         .on('error', $.sass.logError))
-      .pipe($.autoprefixer({
+      .pipe($.autoprefixer({                                // Autoprefixer
         browsers: COMPATIBILITY
         }))
-      .pipe($.if(PRODUCTION, $.cssnano()))            // In production, the CSS is compressed
-      .pipe($.if(!PRODUCTION, $.sourcemaps.write()))  // In production, the CSS is sourcemapped
+      .pipe($.if(PRODUCTION, $.cssnano()))                  // In production, the CSS is compressed
+      .pipe($.if(!PRODUCTION, $.sourcemaps.write()))        // In production, the CSS is sourcemapped
       .pipe(gulp.dest( path.join(THEME.static, '/css') ));
   }
 
 // JS build task
-  function javascript() {                             // Combine JavaScript into one file
+  function javascript() {                                   // JS import paths from `config.yml`
     return gulp.src(PATHS.javascript)
       .pipe($.sourcemaps.init())
-      .pipe($.babel({ignore: ['what-input.js']}))
-      .pipe($.concat('app.js'))
-      .pipe($.if(PRODUCTION, $.uglify()               // In production, the file is minified
+      .pipe($.babel({ignore: ['what-input.js']}))           // Build babel - `what-input` breaks if not ignored.
+      .pipe($.concat('app.js'))                             // Build / concat js
+      .pipe($.if(PRODUCTION, $.uglify()                     // In production, the file is minified
         .on('error', e => { console.log(e); })
         ))
-      .pipe($.if(!PRODUCTION, $.sourcemaps.write()))  // In production, the JS is sourcemapped
+      .pipe($.if(!PRODUCTION, $.sourcemaps.write()))        // In production, the JS is sourcemapped
       .pipe(gulp.dest( path.join(THEME.static, '/js') ));
   }
 
 // Delete `public` folder
   function clean(done) {
-    rimraf(HUGO.public, done);
+    rimraf(HUGO.public, done);                              // rm -rf
   }
 
 // Hugo build task
