@@ -25,7 +25,7 @@ Clone the repository to your site's `themes` directory. Refer to [`exampleSite/c
 ## Building, for developers (Optional)
 This theme uses gulp build scripts modified from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/). OS must have `node` and `bower` installed. 
 
-Cmd | Description
+Command | Description
 :-- | :--
 **Install** | **Run from `/bin` directory to download all dependencies.**
 `npm install` | Installs node dependencies.
