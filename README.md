@@ -39,6 +39,11 @@ Build Tasks | Description
 `npm run build:prod` | Build minified, sourcemapped files.
 `npm run build:css` | Builds `debug` css only.
 `npm run build:js` | Builds `debug` js only.
+
+* Hugo tasks (theme must be installed in a working or fresh hugo installation)
+
+Build Tasks | Description
+--- | ---
 `npm run build:hugo` | Builds `debug` css / js, deletes `/public`, builds `/public`, lint `/public`.
 `npm run server` | Builds `debug` css / js, deletes `/public`, runs hugo server, start css / js / lint watch task.
 
