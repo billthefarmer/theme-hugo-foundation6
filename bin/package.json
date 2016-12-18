@@ -1,6 +1,6 @@
 {
   "name": "hugo-theme-foundation6-blog",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A Foundation v6 theme for the Hugo static site generator.",
   "repository": {
     "type": "git",
