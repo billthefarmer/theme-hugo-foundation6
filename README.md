@@ -1,5 +1,5 @@
-# Hugo Foundation v6 Blog
-A simple [Hugo](https://gohugo.io) theme based on the [Foundation v6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with scss & js gulp build scripts.
+# Hugo Foundation 6.3.0 Blog
+A simple [Hugo](https://gohugo.io) theme based on the [Foundation 6 blog (w/ sidebar) example](http://foundation.zurb.com/templates-previews-sites-f6/blog.html), with scss & js gulp build scripts.
 
 ![Screenshot](https://raw.githubusercontent.com/htko89/hugo-theme-foundation6-blog/master/images/screenshot.png "Screenshot")
 
