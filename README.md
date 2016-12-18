@@ -23,26 +23,21 @@ Clone the repository to your site's `themes` directory. Refer to [`exampleSite/c
 * Use the `<!--more-->` tag in posts to control how much of a post is shown on summary pages
 
 ## Building, for developers (Optional)
-This theme uses gulp build scripts modified from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/). You must have node and bower installed.
-* Run the following from the `/bin` folder to install all dependencies.
+This theme uses gulp build scripts modified from [Foundation Zurb Template](https://github.com/zurb/foundation-zurb-template/). OS must have `node` and `bower` installed. 
 
-Install Command | Description
+Install | Run from `/bin` directory to download all dependencies.
 --- | ---
-`npm install` | 1. Installs scripts dependencies.
-`bower install` | 2. Installs assets dependencies.
+`npm install` | Installs node dependencies.
+`bower install` | Installs bower dependencies.
 
-* Choose one to build from scss / js files in `/source` to `/static`.
-
-Build Tasks | Description
+Build Tasks | Choose one to build from scss / js files in `/source` to `/static`.
 --- | ---
 `npm run build:debug` | Build human readable `debug` files.
 `npm run build:prod` | Build minified, sourcemapped files.
 `npm run build:css` | Builds `debug` css only.
 `npm run build:js` | Builds `debug` js only.
 
-* Hugo tasks (theme must be installed in a working or fresh hugo installation)
-
-Hugo Tasks | Description
+Hugo Tasks | Theme must be installed in a working or fresh hugo installation.
 --- | ---
 `npm run build:hugo` | Builds `debug` css / js, deletes `/public`, builds `/public`, lint `/public`.
 `npm run server` | Builds `debug` css / js, deletes `/public`, runs hugo server, start css / js / lint watch task.
