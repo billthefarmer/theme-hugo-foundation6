@@ -8,9 +8,10 @@ topics:
   - "code"
 tools:
   - "hugo"
-  - "scss"
-  - "jQuery"
+  - "node.js"
   - "gulp"
+  - "sass"
+  - "foundation"
 link: "http://themes.gohugo.io/hugo-theme-foundation6-blog/"
 ---
 # Personal Project
