@@ -40,7 +40,7 @@ This theme uses gulp build scripts modified from [Foundation Zurb Template](http
 
 Command | Description
 :-- | :--
-**Install:** | **Run from `/bin` directory to download all dependencies.**
+**Install:** | **Run from `/scripts` directory to download all dependencies.**
 `npm install` | Installs node dependencies.
 `bower install` | Installs bower dependencies.
 **Build Tasks:** | **Choose one to build from scss / js files in `/source` to `/static`.**

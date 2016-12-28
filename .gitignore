@@ -1,7 +1,5 @@
 # Custom
-legacy/
 node_modules/
 bower_components/
-exampleSite/themes/
+exampleSite/
 npm-debug.log
-*.swp
