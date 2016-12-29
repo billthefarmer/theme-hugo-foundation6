@@ -30,6 +30,7 @@ A simple [Hugo](https://gohugo.io) theme based on the [Foundation 6 blog (w/ sid
 
 ## Usage:
 Clone the repository to your site's `themes` directory. Refer to [`exampleSite/config.toml`](https://github.com/htko89/hugo-theme-foundation6-blog/blob/master/exampleSite/config.toml) for optional configuration values. A few suggestions to help you get a good looking site quickly:
+
 * Keep blog posts in the `content/post` directory, for example: `content/post/my-first-post.md`.
 * Keep static pages in the `content` directory, for example: `content/about.md`.
 * Keep media like images in the `static` directory, for example: `static/2016/10/screenshot.png`.
