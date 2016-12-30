@@ -20,7 +20,7 @@ A simple [Hugo](https://gohugo.io) theme based on the [Foundation 6 blog (w/ sid
 ## Features:
 * Responsive design.
 * Basic [OpenGraph](http://ogp.me) and [Twitter Card](https://dev.twitter.com/cards/types) metadata support.
-* robots.txt linking to XML sitemap (disabled by default, see [Hugo docs](https://gohugo.io/extras/robots-txt/)).
+* `robots.txt` linking to XML sitemap (disabled by default, see [Hugo docs](https://gohugo.io/extras/robots-txt/)).
 * Basic support for [multi-lingual content](https://github.com/spf13/hugo/blob/master/docs/content/content/multilingual.md) (added in Hugo 0.17).
 * Supports Google, Bing, and Yandex site verification via meta tags.
 * Supports Google Analytics (async version), see [Hugo docs](https://gohugo.io/extras/analytics/).
