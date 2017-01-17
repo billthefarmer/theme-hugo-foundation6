@@ -1,5 +1,5 @@
 ---
-type: "folio"
+type: "project"
 draft: false
 date: "2016-12-14"
 title: "Hugo Theme Foundation6 Blog"
