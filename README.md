@@ -14,7 +14,6 @@ tools:
 link: 'http://themes.gohugo.io/hugo-theme-foundation6-blog/'
 code: 'https://github.com/htko89/hugo-theme-foundation6-blog'
 photos:
-  - cover.jpg
   - screenshot-ipadpro-landscape.jpg
   - mockup-tablet.jpg
 path: code/personal/hugo-theme-foundation6-blog
