@@ -4,7 +4,7 @@
   "description": "A Foundation v6 theme for the Hugo static site generator.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/htko89/hugo-theme-foundation6-blog.git"
+    "url": "https://github.com/htkoca/hugo-theme-foundation6-blog.git"
   },
   "keywords": "hugo",
   "author": "Tony Ko",
