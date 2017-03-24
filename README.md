@@ -1,9 +1,9 @@
 ---
 layout: _pages/post
-title: Hugo Theme Foundation6 Blog
+title: Theme - Hugo Foundation6
 date: '2016-12-14'
-link: 'http://themes.gohugo.io/hugo-theme-foundation6-blog/'
-code: 'https://github.com/htkoca/hugo-theme-foundation6-blog'
+link: 'http://themes.gohugo.io/theme-hugo-foundation6/'
+code: 'https://github.com/htkoca/theme-hugo-foundation6'
 categories:
   - code
 tags:
