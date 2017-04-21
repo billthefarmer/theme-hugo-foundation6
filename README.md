@@ -2,7 +2,7 @@
 layout: _pages/post
 title: Theme - Hugo Foundation6
 date: '2016-12-14'
-link: 'http://themes.gohugo.io/theme-hugo-foundation6/'
+link: 'https://themes.gohugo.io/hugo-theme-foundation6/'
 code: 'https://github.com/htkoca/theme-hugo-foundation6'
 categories:
   - code
